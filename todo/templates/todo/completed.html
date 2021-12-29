@@ -1,0 +1,38 @@
+{% extends 'todo/base.html' %}
+{% block main_content %}
+
+<style >
+	body{
+		background-color: #8076a3
+	}
+	.alert{
+		font:20px;
+	}
+</style>
+
+<div align="center">
+<h1>Completed</h1>
+
+<ul>
+	{% for i in todos %}
+	{% if i.title %}
+	<div class="alert alert-info">
+	<li>{{i.title}} -->  {{i.memo}}
+		<br>
+		{{i.created}}
+
+	</li>
+</div>
+	{% else %}
+	<h1>No todos to show</h1>
+	{% endif %}
+
+	{% endfor %}
+</ul>	
+	<br>
+
+<a class="btn btn-primary" href='{% url "createtodo" %}'>Create</a>
+<a class="btn btn-secondary" href='{% url "currenttodos" %}'>Current</a>
+</div>
+
+{% endblock %}
